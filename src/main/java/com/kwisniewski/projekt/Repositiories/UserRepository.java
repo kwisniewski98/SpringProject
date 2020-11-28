@@ -38,4 +38,13 @@ public class UserRepository {
         users.add(user);
     }
 
+    public static User find(int userId) {
+        for (User user : users){
+            if (user.getId() == userId){
+                return user;
+            }
+        }
+        return null;
+    }
+
 }

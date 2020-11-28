@@ -37,4 +37,12 @@ public class AppRepository {
     public static void add(App app){
         apps.add(app);
     }
+    public static App find(int userId) {
+        for (App app : apps){
+            if (app.getId() == userId){
+                return app;
+            }
+        }
+        return null;
+    }
 }
