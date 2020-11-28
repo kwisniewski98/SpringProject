@@ -13,27 +13,27 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Domain</th>
-            <th scope="col">Version</th>
+            <th scope="col">Id app</th>
+            <th scope="col">Image url</th>
+            <th scope="col">Image</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
         </tr>
     </thead>
-    <tbody>
-        <th:block  th:each="app, i : ${apps}">
+    <tbody >
+        <th:block  th:each="aid, i : ${appImageData}">
             <tr>
-                <td  th:text="${app.getId()}"></td>
-                <td th:text="${app.getName()}"></td>
-                <td th:text="${app.getDomain()}"></td>
-                <td th:text="${app.getVersion()}"></td>
+                <td  th:text="${aid.getId()}"></td>
+                <td th:text="${aid.getId_app()}"></td>
+                <td th:text="${aid.getImage_url()}"></td>
+                <td> <img style="height: 200px; width: 200px" th:src="${aid.getImage_url()}" class="img-fluid"></td>
                 <td>
-                    <form method="post" th:action="@{/apps/delete/{id} (id=${i.index})}" >
+                    <form method="post" th:action="@{/appimagedata/delete/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Delete</button>
                     </form>
                 </td>
                 <td>
-                    <form method="get" th:action="@{/apps/edit/{id} (id=${i.index})}" >
+                    <form method="get" th:action="@{/appimagedata/edit/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Edit</button>
                     </form>
                 </td>

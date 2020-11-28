@@ -19,21 +19,21 @@ public class AppUserRepository {
     private void init(){
         appUsers = this.appUserList;
     }
-    public static AppUser getAppUser(int id){
+    public static AppUser get(int id){
         return appUsers.get(id);
     }
 
-    public static AppUser deleteAppUser(int id){
+    public static AppUser delete(int id){
         return appUsers.remove(id);
     }
-    public static List<AppUser> getAppUsers(){
+    public static List<AppUser> getAll(){
         return appUsers;
     }
     
-    public static void addAppUser(int id, AppUser AppUser){
+    public static void add(int id, AppUser AppUser){
         appUsers.add(id, AppUser);
     }
-    public static void addAppUser(AppUser AppUser){
+    public static void add(AppUser AppUser){
         appUsers.add(AppUser);
     }
 }

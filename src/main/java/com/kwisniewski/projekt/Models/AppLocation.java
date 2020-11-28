@@ -1,11 +1,29 @@
 package com.kwisniewski.projekt.Models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AppLocation {
+
+    @NotNull(message = "ID is required")
     private int id;
+
+    @NotNull(message = "ID App is required")
     private int id_app;
+
+    @NotNull(message = "City is required")
+    @Size(min = 3, message = "City must be at least 3 characters long")
     private String city;
+
+    @NotNull(message = "Street is required")
+    @Size(min = 3, message = "Street must be at least 3 characters long")
     private String street;
+
+    @NotNull(message = "Street number is required")
     private int street_number;
+
+    @NotNull(message = "Country is required")
+    @Size(min = 3, message = "Country must be at least 3 characters long")
     private String country;
 
     public void setId(int id) {

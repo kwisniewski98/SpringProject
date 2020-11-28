@@ -20,21 +20,21 @@ public class AppRepository {
     private void init(){
         apps = this.appList;
     }
-    public static App getApp(int id){
+    public static App get(int id){
         return apps.get(id);
     }
 
-    public static App deleteApp(int id){
+    public static App delete(int id){
         return apps.remove(id);
     }
-    public static List<App> getApps(){
+    public static List<App> getAll(){
         return apps;
     }
     
-    public static void addApp(int id, App app){
+    public static void add(int id, App app){
         apps.add(id, app);
     }
-    public static void addApp(App app){
+    public static void add(App app){
         apps.add(app);
     }
 }

@@ -19,21 +19,21 @@ public class AppImageDataRepository {
     private void init(){
         appImageData = this.appImageDataList;
     }
-    public static AppImageData getAppImageData(int id){
+    public static AppImageData get(int id){
         return appImageData.get(id);
     }
 
-    public static AppImageData deleteAppImageData(int id){
+    public static AppImageData delete(int id){
         return appImageData.remove(id);
     }
-    public static List<AppImageData> getAppImageData(){
+    public static List<AppImageData> getAll(){
         return appImageData;
     }
 
-    public static void addAppImageData(int id, AppImageData AppImageData){
+    public static void add(int id, AppImageData AppImageData){
         appImageData.add(id, AppImageData);
     }
-    public static void addAppImageData(AppImageData AppImageData){
+    public static void add(AppImageData AppImageData){
         appImageData.add(AppImageData);
     }
 }

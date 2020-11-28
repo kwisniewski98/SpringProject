@@ -13,27 +13,31 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Domain</th>
-            <th scope="col">Version</th>
+            <th scope="col">ID App</th>
+            <th scope="col">City</th>
+            <th scope="col">Street</th>
+            <th scope="col">Street number</th>
+            <th scope="col">Country</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
         </tr>
     </thead>
     <tbody>
-        <th:block  th:each="app, i : ${apps}">
+        <th:block  th:each="appLocation, i : ${appLocations}">
             <tr>
-                <td  th:text="${app.getId()}"></td>
-                <td th:text="${app.getName()}"></td>
-                <td th:text="${app.getDomain()}"></td>
-                <td th:text="${app.getVersion()}"></td>
+                <td  th:text="${appLocation.getId()}"></td>
+                <td th:text="${appLocation.getId_app()}"></td>
+                <td th:text="${appLocation.getCity()}"></td>
+                <td th:text="${appLocation.getStreet()}"></td>
+                <td th:text="${appLocation.getStreet_number()}"></td>
+                <td th:text="${appLocation.getCountry()}"></td>
                 <td>
-                    <form method="post" th:action="@{/apps/delete/{id} (id=${i.index})}" >
+                    <form method="post" th:action="@{/applocations/delete/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Delete</button>
                     </form>
                 </td>
                 <td>
-                    <form method="get" th:action="@{/apps/edit/{id} (id=${i.index})}" >
+                    <form method="get" th:action="@{/applocations/edit/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Edit</button>
                     </form>
                 </td>

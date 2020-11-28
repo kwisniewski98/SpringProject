@@ -19,21 +19,21 @@ public class AppLocationRepository {
     private void init(){
         appLocations = this.appLocationList;
     }
-    public static AppLocation getAppLocation(int id){
+    public static AppLocation get(int id){
         return appLocations.get(id);
     }
 
-    public static AppLocation deleteAppLocation(int id){
+    public static AppLocation delete(int id){
         return appLocations.remove(id);
     }
-    public static List<AppLocation> getAppLocations(){
+    public static List<AppLocation> getAll(){
         return appLocations;
     }
     
-    public static void addAppLocation(int id, AppLocation AppLocation){
+    public static void add(int id, AppLocation AppLocation){
         appLocations.add(id, AppLocation);
     }
-    public static void addAppLocation(AppLocation AppLocation){
+    public static void add(AppLocation AppLocation){
         appLocations.add(AppLocation);
     }
 }

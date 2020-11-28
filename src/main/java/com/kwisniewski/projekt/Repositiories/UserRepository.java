@@ -20,21 +20,22 @@ public class UserRepository {
         users = this.userList;
     }
 
-    public static User getUser(int id){
+    public static User get(int id){
         return users.get(id);
     }
 
-    public static User deleteUser(int id){
+    public static User delete(int id){
         return users.remove(id);
     }
-    public static List<User> getUsers(){
+    public static List<User> getAll(){
         return users;
     }
 
-    public static void addUser(int id, User user){
+    public static void add(int id, User user){
         users.add(id, user);
     }
-    public static void addUser(User user){
+    public static void add(User user){
         users.add(user);
     }
+
 }
