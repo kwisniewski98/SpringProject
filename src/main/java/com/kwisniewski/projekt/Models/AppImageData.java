@@ -38,4 +38,9 @@ public class AppImageData {
         this.id_app = id_app;
         this.image_url = image_url;
     }
+
+    @Override
+    public String toString() {
+        return id + "," + id_app + "," + image_url;
+    }
 }

@@ -1,10 +1,16 @@
 package com.kwisniewski.projekt.Repositiories;
 
 import com.kwisniewski.projekt.Models.User;
+import com.kwisniewski.projekt.Models.UserFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Component
@@ -36,6 +42,19 @@ public class UserRepository {
     }
     public static void add(User user){
         users.add(user);
+    }
+
+    public static void dump(String directory) throws IOException {
+        String header = "id,first_name,last_name,email,username";
+        File outFile = new File(Paths.get(directory, "User.csv").toString());
+        outFile.delete();
+        outFile.createNewFile();
+        FileWriter out = new FileWriter(outFile);
+        out.write(header);
+        for (User user : users){
+            out.write("\n" + user.toString());
+        }
+        out.close();
     }
 
     public static User find(int userId) {

@@ -57,4 +57,9 @@ public class App {
         this.domain = domain;
         this.version = version;
     }
+
+    @Override
+    public String toString() {
+        return id + "," + name + "," + domain + "," + version;
+    }
 }

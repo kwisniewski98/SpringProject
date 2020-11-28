@@ -6,10 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Component
-public class AppImageDataRepository {
+public class AppImageDataRepository extends DumpableRepository{
     @Autowired
     private List<AppImageData> appImageDataList;
 
@@ -35,5 +39,18 @@ public class AppImageDataRepository {
     }
     public static void add(AppImageData AppImageData){
         appImageData.add(AppImageData);
+    }
+
+    public static void dump(String directory) throws IOException {
+        String header = "id,id_app,image_url";
+        File outFile = new File(Paths.get(directory, "AppImageData.csv").toString());
+        outFile.delete();
+        outFile.createNewFile();
+        FileWriter out = new FileWriter(outFile);
+        out.write(header);
+        for (AppImageData aid : appImageData){
+            out.write("\n" + aid.toString());
+        }
+        out.close();
     }
 }

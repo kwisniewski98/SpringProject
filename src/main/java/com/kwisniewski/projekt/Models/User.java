@@ -72,4 +72,9 @@ public class User {
         this.email = email;
         this.username = username;
     }
+
+    @Override
+    public String toString() {
+        return id+ "," +first_name+ "," +last_name+ "," +email+ "," +username;
+    }
 }

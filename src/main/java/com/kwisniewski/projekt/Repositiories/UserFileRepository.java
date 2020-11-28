@@ -1,11 +1,16 @@
 package com.kwisniewski.projekt.Repositiories;
 
+import com.kwisniewski.projekt.Models.AppUser;
 import com.kwisniewski.projekt.Models.User;
 import com.kwisniewski.projekt.Models.UserFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Component
@@ -37,4 +42,16 @@ public class UserFileRepository {
         userFiles.add(UserFile);
     }
 
+    public static void dump(String directory) throws IOException {
+        String header = "id_app,id_user,filename";
+        File outFile = new File(Paths.get(directory, "UserFile.csv").toString());
+        outFile.delete();
+        outFile.createNewFile();
+        FileWriter out = new FileWriter(outFile);
+        out.write(header);
+        for (UserFile userFile : userFiles){
+            out.write("\n" + userFile.toString());
+        }
+        out.close();
+    }
 }

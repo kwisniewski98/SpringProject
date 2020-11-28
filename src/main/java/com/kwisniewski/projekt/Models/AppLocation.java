@@ -85,4 +85,9 @@ public class AppLocation {
         this.street_number = street_number;
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return id+ "," +id_app+ "," +city+ "," +street+ "," +street_number+ "," +country;
+    }
 }

@@ -1,15 +1,20 @@
 package com.kwisniewski.projekt.Repositiories;
 
+import com.kwisniewski.projekt.Models.AppImageData;
 import com.kwisniewski.projekt.Models.AppLocation;
 import com.kwisniewski.projekt.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Component
-public class AppLocationRepository {
+public class AppLocationRepository extends DumpableRepository {
     @Autowired
     private List<AppLocation> appLocationList;
 
@@ -35,5 +40,18 @@ public class AppLocationRepository {
     }
     public static void add(AppLocation AppLocation){
         appLocations.add(AppLocation);
+    }
+
+    public static void dump(String directory) throws IOException {
+        String header = "id,id_app,city,street,street_number,country";
+        File outFile = new File(Paths.get(directory, "AppLocation.csv").toString());
+        outFile.delete();
+        outFile.createNewFile();
+        FileWriter out = new FileWriter(outFile);
+        out.write(header);
+        for (AppLocation appLocation: appLocations){
+            out.write("\n" + appLocation.toString());
+        }
+        out.close();
     }
 }

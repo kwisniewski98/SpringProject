@@ -27,4 +27,8 @@ public class AppUser {
         this.id_app = id_app;
         this.id_user = id_user;
     }
+    @Override
+    public String toString() {
+        return id_app + "," + id_user;
+    }
 }

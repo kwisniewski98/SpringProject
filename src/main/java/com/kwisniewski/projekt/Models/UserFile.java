@@ -37,4 +37,9 @@ public class UserFile {
         this.id_user = id_user;
         this.filename = filename;
     }
+
+    @Override
+    public String toString() {
+        return id_app+ "," + id_user+ "," + filename;
+    }
 }

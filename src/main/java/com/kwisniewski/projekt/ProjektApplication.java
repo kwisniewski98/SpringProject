@@ -1,21 +1,43 @@
 package com.kwisniewski.projekt;
 
+import com.kwisniewski.projekt.Models.AppImageData;
+import com.kwisniewski.projekt.Models.AppLocation;
+import com.kwisniewski.projekt.Models.UserFile;
+import com.kwisniewski.projekt.Repositiories.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
+import javax.annotation.PreDestroy;
 import java.io.*;
+import java.util.ArrayList;
 
 @ImportResource("classpath:beans.xml")
 
 @SpringBootApplication
 public class ProjektApplication {
 
-    public static void main(String[] args) throws IOException {
 
-        parseCSV("C:\\Users\\Krzysiu\\Desktop\\uczelnia\\spring\\projekt\\src\\main\\resources\\static\\csv", "C:\\Users\\Krzysiu\\Desktop\\uczelnia\\spring\\projekt\\src\\main\\resources\\beans.xml");
-        ConfigurableApplicationContext ctx = SpringApplication.run(ProjektApplication.class, args);
+
+
+    public static void main(String[] args) throws IOException {
+        parseCSV("src\\main\\resources\\static\\csv", "src\\main\\resources\\beans.xml");
+        SpringApplication.run(ProjektApplication.class, args);
+    }
+
+    @PreDestroy
+    public void onExit() throws IOException {
+        String dumpPath = "tmp";
+        File f = new File(dumpPath);
+        f.mkdir();
+        AppImageDataRepository.dump(dumpPath);
+        AppLocationRepository.dump(dumpPath);
+        AppRepository.dump(dumpPath);
+        AppUserRepository.dump(dumpPath);
+        UserFileRepository.dump(dumpPath);
+        UserRepository.dump(dumpPath);
+
     }
 
     public static void parseCSV(String csvPath, String outputFile) throws IOException {
