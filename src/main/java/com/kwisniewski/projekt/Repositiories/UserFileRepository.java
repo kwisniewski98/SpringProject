@@ -1,16 +1,24 @@
 package com.kwisniewski.projekt.Repositiories;
 
+import com.kwisniewski.projekt.Models.User;
 import com.kwisniewski.projekt.Models.UserFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
 public class UserFileRepository {
     @Autowired
+    private List<UserFile> userFileList;
+
     private static List<UserFile> userFiles;
 
+    @PostConstruct
+    private void init(){
+        userFiles = this.userFileList;
+    }
     public static UserFile getUserFile(int id){
         return userFiles.get(id);
     }

@@ -1,16 +1,24 @@
 package com.kwisniewski.projekt.Repositiories;
 
 import com.kwisniewski.projekt.Models.AppImageData;
+import com.kwisniewski.projekt.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
 public class AppImageDataRepository {
     @Autowired
+    private List<AppImageData> appImageDataList;
+
     private static List<AppImageData> appImageData;
 
+    @PostConstruct
+    private void init(){
+        appImageData = this.appImageDataList;
+    }
     public static AppImageData getAppImageData(int id){
         return appImageData.get(id);
     }
