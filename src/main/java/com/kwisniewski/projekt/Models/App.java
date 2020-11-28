@@ -1,9 +1,19 @@
 package com.kwisniewski.projekt.Models;
 
+import javax.validation.constraints.NotNull;
+
 public class App {
+
+    @NotNull(message = "ID is required")
     private int id;
+
+    @NotNull(message = "Name is required")
     private String name;
+
+    @NotNull(message = "Domain is required")
     private String domain;
+
+    @NotNull(message = "Version is required")
     private String version;
 
     public App() {
