@@ -1,6 +1,7 @@
 package com.kwisniewski.projekt.Controllers;
 
 import com.kwisniewski.projekt.Models.App;
+import com.kwisniewski.projekt.Repositiories.AppImageDataRepository;
 import com.kwisniewski.projekt.Repositiories.AppRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,11 @@ public class AppController {
     public String appForm(Model model){
         model.addAttribute("app", new App());
         return "apps/appAddForm";
+    }
+    @GetMapping("/apps/images/{id}")
+    public String appImages(@PathVariable int id, Model model){
+        model.addAttribute("appImageData", AppImageDataRepository.findByApp(id));
+        return "apps/appImageDataList";
     }
     @PostMapping("/apps/add")
     public String addapp(@Valid App app, Errors errors){

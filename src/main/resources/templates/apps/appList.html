@@ -18,6 +18,7 @@
             <th scope="col">Version</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
+            <th scope="col">Images</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,11 @@
                 <td>
                     <form method="get" th:action="@{/apps/edit/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" th:action="@{/apps/images/{id} (id=${app.getId()})}" >
+                        <button type="submit" class="btn btn-primary mb-2" >Images</button>
                     </form>
                 </td>
             </tr>
