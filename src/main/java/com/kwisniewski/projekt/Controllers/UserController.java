@@ -1,6 +1,8 @@
 package com.kwisniewski.projekt.Controllers;
 
 import com.kwisniewski.projekt.Models.User;
+import com.kwisniewski.projekt.Models.UserFile;
+import com.kwisniewski.projekt.Repositiories.UserFileRepository;
 import com.kwisniewski.projekt.Repositiories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.text.ParseException;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -43,6 +46,13 @@ public class UserController {
     public String userForm(Model model){
         model.addAttribute("user", new User());
         return "users/userAddForm";
+    }
+    @GetMapping("/users/files/{id}")
+    public String userFiles(@PathVariable int id, Model model) {
+        List<UserFile> files = UserFileRepository.findByUser(id);
+
+        model.addAttribute("files", files);
+        return "users/files";
     }
     @PostMapping("/users/add")
     public String addUser(@Valid User user, Errors errors){

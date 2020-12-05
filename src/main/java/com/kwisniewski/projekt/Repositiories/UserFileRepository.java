@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -53,5 +54,14 @@ public class UserFileRepository {
             out.write("\n" + userFile.toString());
         }
         out.close();
+    }
+    public static List<UserFile> findByUser(int id) {
+        ArrayList<UserFile> files = new ArrayList<>();
+        for(UserFile file : userFiles) {
+            if (file.getId_user() == id){
+                files.add(file);
+            }
+        }
+        return files;
     }
 }

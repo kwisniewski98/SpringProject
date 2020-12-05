@@ -19,6 +19,8 @@
             <th scope="col">Username</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
+            <th scope="col">Files</th>
+
         </tr>
     </thead>
     <tbody>
@@ -37,6 +39,11 @@
                 <td>
                     <form method="get" th:action="@{/users/edit/{id} (id=${i.index})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" th:action="@{/users/files/{id} (id=${user.getId()})}" >
+                        <button type="submit" class="btn btn-primary mb-2" >Files</button>
                     </form>
                 </td>
             </tr>
