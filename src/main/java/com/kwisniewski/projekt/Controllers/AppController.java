@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -66,5 +68,17 @@ public class AppController {
         AppRepository.add(app);
         return "redirect:/apps";
 
+    }
+    @PostMapping("/apps/search")
+    public String searchApp(String id, Model model){
+        ArrayList<App> apps = new ArrayList<>();
+        try {
+             apps.add(AppRepository.find(Integer.parseInt(id)));
+        }
+        catch (NumberFormatException ignored){
+
+        }
+        model.addAttribute("apps", apps);
+        return "apps/appList";
     }
 }

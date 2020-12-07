@@ -1,7 +1,9 @@
 package com.kwisniewski.projekt.Controllers;
 
+import com.kwisniewski.projekt.Models.App;
 import com.kwisniewski.projekt.Models.User;
 import com.kwisniewski.projekt.Models.UserFile;
+import com.kwisniewski.projekt.Repositiories.AppRepository;
 import com.kwisniewski.projekt.Repositiories.UserFileRepository;
 import com.kwisniewski.projekt.Repositiories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -63,4 +66,17 @@ public class UserController {
         return "redirect:/users";
 
     }
+    @PostMapping("/users/search")
+    public String searchUser(String id, Model model){
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            users.add(UserRepository.find(Integer.parseInt(id)));
+        }
+        catch (NumberFormatException ignored){
+
+        }
+        model.addAttribute("users", users);
+        return "users/userList";
+    }
 }
+
