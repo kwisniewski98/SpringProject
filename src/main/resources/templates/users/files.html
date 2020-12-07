@@ -16,6 +16,7 @@
             <th scope="col">App ID</th>
             <th scope="col">User ID</th>
             <th scope="col">Filename</th>
+            <th scope="col">Remove</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,12 @@
                 <td th:text="${file.getId_app()}"></td>
                 <td th:text="${file.getId_user()}"></td>
                 <td th:text="${file.getFilename()}"></td>
+                <td>
+                    <form method="post" th:action="@{/userfile/delete}">
+                        <input hidden name="userFile" type="text" th:value="*{file.toString()}">
+                        <input type="submit" class="btn btn-primary mb-2" />
+                    </form>
+                </td>
             </tr>
         </th:block>
     </tbody>

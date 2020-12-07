@@ -3,6 +3,7 @@ package com.kwisniewski.projekt.Controllers;
 import com.kwisniewski.projekt.Models.App;
 import com.kwisniewski.projekt.Repositiories.AppImageDataRepository;
 import com.kwisniewski.projekt.Repositiories.AppRepository;
+import com.kwisniewski.projekt.Repositiories.UserFileRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -51,6 +52,11 @@ public class AppController {
     public String appImages(@PathVariable int id, Model model){
         model.addAttribute("appImageData", AppImageDataRepository.findByApp(id));
         return "apps/appImageDataList";
+    }
+    @GetMapping("/apps/files/{id}")
+    public String appFiles(@PathVariable int id, Model model){
+        model.addAttribute("files", UserFileRepository.findByApp(id));
+        return "users/files";
     }
     @PostMapping("/apps/add")
     public String addapp(@Valid App app, Errors errors){

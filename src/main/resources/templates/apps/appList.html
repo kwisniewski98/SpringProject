@@ -19,6 +19,8 @@
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
             <th scope="col">Images</th>
+            <th scope="col">Files</th>
+
         </tr>
     </thead>
     <tbody>
@@ -41,6 +43,11 @@
                 <td>
                     <form method="get" th:action="@{/apps/images/{id} (id=${app.getId()})}" >
                         <button type="submit" class="btn btn-primary mb-2" >Images</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" th:action="@{/apps/files/{id} (id=${app.getId()})}" >
+                        <button type="submit" class="btn btn-primary mb-2" >Files</button>
                     </form>
                 </td>
             </tr>

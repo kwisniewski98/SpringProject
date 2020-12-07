@@ -64,4 +64,26 @@ public class UserFileRepository {
         }
         return files;
     }
+    public static List<UserFile> findByApp(int id) {
+        ArrayList<UserFile> files = new ArrayList<>();
+        for(UserFile file : userFiles) {
+            if (file.getId_app() == id){
+                files.add(file);
+            }
+        }
+        return files;
+    }
+    public static void delete(String userFile) {
+        String[] fields = userFile.split(",");
+        UserFile f = null;
+        for (UserFile file : userFiles) {
+            if (file.getId_app() == Integer.parseInt(fields[0]) &&
+                file.getId_user() == Integer.parseInt(fields[1]) &&
+                    file.getFilename().equals(fields[2])){
+                f = file;
+                break;
+            }
+        }
+        userFiles.remove(f);
+    }
 }
